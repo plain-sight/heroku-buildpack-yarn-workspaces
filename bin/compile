@@ -19,8 +19,11 @@ fi
 
 cd $BUILD_DIR
 
+header "build @kvittoapp/api-client"
 yarn workspace @kvittoapp/api-client run build
+header "build @kvittoapp/ducks"
 yarn workspace @kvittoapp/ducks run build
+header "build @kvittoapp/${APP_NAME}"
 yarn workspace $APP_NAME run build
 
 # Pull in the selected app to the root directory
