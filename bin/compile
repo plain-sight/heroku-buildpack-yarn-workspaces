@@ -22,6 +22,8 @@ if [ ! -d "$BUILD_DIR/$APP_ROOT" ]; then
   exit 1
 fi
 
+cd $BUILD_DIR
+
 yarn workspace @kvittoapp/api-client run build
 yarn workspace @kvittoapp/ducks run build
 yarn workspace $APP_NAME run build
