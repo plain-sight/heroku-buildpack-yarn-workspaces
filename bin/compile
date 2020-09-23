@@ -9,12 +9,22 @@ if [ ! -f "$ENV_DIR/APP_ROOT" ]; then
   exit 1
 fi
 
+if [ ! -f "$ENV_DIR/APP_NAME" ]; then
+  echo "APP_NAME not set. Aborting."
+  exit 1
+fi
+
 APP_ROOT="$(cat "$ENV_DIR/APP_ROOT")"
+APP_NAME="$(cat "$ENV_DIR/APP_NAME")"
 
 if [ ! -d "$BUILD_DIR/$APP_ROOT" ]; then
   echo "No project found at $APP_ROOT. Aborting."
   exit 1
 fi
+
+yarn workspace @kvittoapp/api-client run build
+yarn workspace @kvittoapp/ducks run build
+yarn workspace $APP_NAME run build
 
 # Pull in the selected app to the root directory
 rsync -r "$BUILD_DIR/$APP_ROOT/" $BUILD_DIR/ --exclude "node_modules"
