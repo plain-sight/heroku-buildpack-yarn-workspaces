@@ -10,7 +10,7 @@ if [ ! -f "$ENV_DIR/APP_ROOT" ]; then
 fi
 
 APP_ROOT="$(cat "$ENV_DIR/APP_ROOT")"
-APP_NAME=`cat $BUILD/DIR/$APP_ROOT/package.json | jq -r ".name"`
+APP_NAME=`cat $BUILD_DIR/$APP_ROOT/package.json | jq -r ".name"`
 
 if [ ! -d "$BUILD_DIR/$APP_ROOT" ]; then
   echo "No project found at $APP_ROOT. Aborting."
