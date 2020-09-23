@@ -3,6 +3,9 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+BUILDPACK_DIR=$(cd "$(dirname "${0:-}")"; cd ..; pwd)
+
+source "$BUILDPACK_DIR/lib/output.sh"
 
 if [ ! -f "$ENV_DIR/APP_ROOT" ]; then
   echo "APP_ROOT not set. Aborting."
