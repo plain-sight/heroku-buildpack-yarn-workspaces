@@ -16,8 +16,6 @@ BP_DIR=$(cd "$(dirname "${0:-}")"; cd ..; pwd)
 
 source "$BP_DIR/lib/output.sh"
 
-build_start_time=$(nowms)
-
 if [ ! -f "$ENV_DIR/APP_ROOT" ]; then
   error "APP_ROOT not set. Aborting."
   exit 1
