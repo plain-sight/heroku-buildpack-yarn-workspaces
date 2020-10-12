@@ -32,9 +32,7 @@ fi
 cd $BUILD_DIR
 
 if [ -f "$BUILD_DIR/.workspaces-prebuild" ]; then
-  while read in; do yarn workspace "$in"; done < "$BUILD_DIR/.workspaces-prebuild"
-  # Rerun yarn to pickup any dependencies from the workspace prebuild
-  # yarn
+  bash -i "$BUILD_DIR/.workspaces-prebuild"
 fi
 
 header "build ${APP_NAME}"
